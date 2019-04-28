@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>Table</Title>
+      <Author>
+      </Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>_table</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="csharp" Delimiter="$"><![CDATA[[CarId] UNIQUEIDENTIFIER NOT NULL,
+[Description] VARCHAR(50)     NULL,
+[Type] UNIQUEIDENTIFIER NULL,
+[CarRentalId] UNIQUEIDENTIFIER NULL,
+PRIMARY KEY CLUSTERED([CarId] ASC),
+CONSTRAINT[FK_Car_ToTable] FOREIGN KEY([CarRentalId]) REFERENCES[dbo].[CarRental] ([CarRentalId])]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>QueryDBDelete</Title>
+      <Author>
+      </Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>_delquery</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="csharp" Delimiter="$"><![CDATA[        public void QueryDelete(string _Fahrzeug)
+        {
+            var query = from tabelleFahr in dbmodel.Fahrzeug
+                        join tabelleEigen in dbmodel.Eigentuemer on tabelleFahr.EigentuemerId equals tabelleEigen.EigentuemerId
+                        where tabelleFahr.NameFahrzeug.Equals(_Fahrzeug)
+                        select tabelleFahr;
+
+            foreach (var item in query)
+            {
+                dbmodel.Fahrzeug.Remove(item);
+            }
+            dbmodel.SaveChanges();
+        }]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

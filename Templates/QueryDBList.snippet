@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>QueryDBList</Title>
+      <Author>
+      </Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>_listquery</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="csharp" Delimiter="$"><![CDATA[        List<Result> results = new List<Result>();
+
+        public List<Result> QueryAll()
+        {
+            results.Clear();
+            var query = from tabelleFahr in dbmodel.Fahrzeug
+                        join tabelleEigen in dbmodel.Eigentuemer on tabelleFahr.EigentuemerId equals tabelleEigen.EigentuemerId
+                        select new { Name = tabelleFahr.NameFahrzeug, Eigen = tabelleEigen.Name };
+
+            foreach (var item in query)
+            {
+                results.Add(new Result
+                {
+                    Fahrzeugname=item.Name,
+                    Eigentuemer=item.Eigen
+                });
+            }
+            return results;
+        }]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

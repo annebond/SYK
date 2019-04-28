@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>dbprocess</Title>
+      <Author>
+      </Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>_dbprocess</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="csharp" Delimiter="$"><![CDATA[/* DB PROCESS
+add connection: View->ServerExplorer -> (localdb)\MSSQLLocalDB
+add DB, Tabellen, Felder, ForeignKeys
+add new project ClassLibrary Datalayer
+    add new folder DBModel
+        add new element: ADO.NET Entity Data Model (select created DB)
+    add new class DataProvider and initialize DB + add queries (to list, insert, delete elements from/into db tables)
+add new project console app to call datalayer classes
+	add reference to datalyer.dll in debug folder
+	connnection string aus app.config im DataLayer kopieren -> in console app.config einfügen
+	init dataprovider
+	console writeline ...
+*/]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
