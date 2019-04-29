@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>WCFprovideroutput</Title>
+      <Author>
+      </Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>_wcfprovideroutput</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="csharp" Delimiter="$"><![CDATA[//output in WCF Provider service - 3 props of the message class
+public void DoWork(ChatMessage msg)
+{
+    Console.WriteLine(String.Format("Received a message {0} Date: {1} \r\n\t {2}", msg.Header, msg.Date, msg.Content))
+};]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
