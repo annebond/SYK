@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>GUI</Title>
+      <Author>
+      </Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>_gui</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="csharp" Delimiter="$"><![CDATA[VieModel
+	BaseViewModel
+	VMCars
+Commands
+	MVVMCommand
+XAML
+------------------------------
+//copy into config: endpoint von ServiceLayer - alles zwischen tags servicemodel
+VMCars
+public class VmCars : BaseViewModel
+    {
+        public ObservableCollection<Auto> Cars { get; set; }
+        private LayerService layerService;
+
+        private MVVMCommand guiRefresh;
+
+        public MVVMCommand GuiRefresh
+        {
+            get { return guiRefresh; }
+            set { guiRefresh = value; }
+        }
+
+
+        public VmCars()
+        {
+            layerService = new LayerService();
+            Cars = new ObservableCollection<Auto>();
+            Aktualisieren();
+            GuiRefresh = new MVVMCommand((para) => Aktualisieren(), (para) => { return true; });
+        }
+
+        public void Aktualisieren()
+        {
+            foreach (var item in layerService.QueryAll())
+            {
+                Cars.Add(item);
+            }
+        }
+    }
+
+BaseVieModel
+public class BaseViewModel : INotifyPropertyChanged
+    {
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnChanged(string propname)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propname));
+            }
+        }
+    }
+
+MVVMCommand
+    public class MVVMCommand : ICommand
+    {
+
+        Action<object> executeAction;
+        Func<object, bool> canExecute;
+
+        public MVVMCommand(Action<object> executeAction, Func<object, bool> canExecute)
+        {
+            this.canExecute = canExecute;
+            this.executeAction = executeAction;
+        }
+
+        public bool CanExecute(object parameter)
+        {
+            return canExecute == null ? true : canExecute(parameter);
+        }
+
+        public void Execute(object parameter)
+        {
+            executeAction(parameter);
+        }
+
+        public event EventHandler CanExecuteChanged
+        {
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
+        }
+
+
+    }
+
+XAML
+<Grid>
+        
+        <DataGrid Margin="30,30,30,100" AutoGenerateColumns="False" ItemsSource="{Binding Cars}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Type}" Header="Type" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Kw}" Header="Kw" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Miles}" Header="Miles" Width="*"/>
+            </DataGrid.Columns>
+
+        </DataGrid>
+        <Button Command="{Binding GuiRefresh}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="150" Height="40" Margin="30" Content="Refresh" />
+
+</Grid>
+
+MainWindow.xaml
+        private VmCars vm = new VmCars();
+
+        public MainWindow()
+        {
+            InitializeComponent();
+            DataContext = vm;
+        }]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

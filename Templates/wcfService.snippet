@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>wcfService</Title>
+      <Author>
+      </Author>
+      <Description>full example wcf service CarDB Service
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>_wcfService</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="csharp" Delimiter="$"><![CDATA[DataProvider dataProvider = new DataProvider();
+
+        public bool InsertCar(string name, string type, int? kw, int? miles)
+        {
+            return dataProvider.InsertCar(name, type, kw, miles);
+        }
+
+        public List<Auto> SelectAllCars()
+        {
+            List<Auto> temp = new List<Auto>();
+
+            foreach (var item in dataProvider.QueryAllCars())
+            {
+                temp.Add(new Auto(item.Id, item.Name, item.Type, item.Kw, item.Miles));
+            }
+
+            return temp;
+        }]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

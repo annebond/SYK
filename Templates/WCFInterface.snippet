@@ -5,23 +5,21 @@
       <SnippetTypes>
         <SnippetType>Expansion</SnippetType>
       </SnippetTypes>
-      <Title>WCFinithost</Title>
+      <Title>WCFInterface</Title>
       <Author>
       </Author>
-      <Description>
+      <Description>full example wcf interface CarDB service
       </Description>
       <HelpUrl>
       </HelpUrl>
-      <Shortcut>_wcfinithost</Shortcut>
+      <Shortcut>_wcfinterface</Shortcut>
     </Header>
     <Snippet>
-      <Code Language="csharp" Delimiter="$"><![CDATA[
-		// using.System.ServiceModel;
-		ServiceHost host = new ServiceHost(typeof(< name of service >));
-		host.Open();
-		Console.WriteLine("Service gestartet");
-		Console.ReadLine();
-	  ]]></Code>
+      <Code Language="csharp" Delimiter="$"><![CDATA[[OperationContract]
+        List<Auto> SelectAllCars();
+
+        [OperationContract]
+        bool InsertCar(string name, string type, int? kw, int? miles);]]></Code>
     </Snippet>
   </CodeSnippet>
 </CodeSnippets>

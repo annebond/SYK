@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>MQ</Title>
+      <Author>
+      </Author>
+      <Description>full example of MQHandler Car Management project
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>_MQ</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="csharp" Delimiter="$"><![CDATA[//class must be public and generic -> public class MQHandling<T>
+        private string constring = @"FormatName:direct=os:";
+        private string mqname = @".\private$\";
+
+        private MessageQueue mq;
+
+        public MQHandling(string mqname)
+        {
+            this.mqname += mqname;
+
+            if (!MessageQueue.Exists(this.mqname))
+            {
+                MessageQueue.Create(this.mqname);
+            }
+
+            mq = new MessageQueue(constring + this.mqname);
+            mq.Formatter = new XmlMessageFormatter(new Type[] { typeof(T) });
+        }
+
+        public void Send(T data)
+        {
+            mq.Send(data);
+        }
+
+        public T Read()
+        {
+            return (T)mq.Receive().Body;
+        }]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

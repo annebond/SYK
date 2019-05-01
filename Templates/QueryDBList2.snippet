@@ -15,7 +15,8 @@
       <Shortcut>_listwherequery</Shortcut>
     </Header>
     <Snippet>
-      <Code Language="csharp" Delimiter="$"><![CDATA[        public List<Car> QueryAllCarsByType(string type)
+      <Code Language="csharp" Delimiter="$"><![CDATA[        
+		public List<Car> QueryAllCarsByType(string type)
         {
             var query = from c in dbmodel.Cars
                         where c.CarType.Name.Equals(type)

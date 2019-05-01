@@ -8,14 +8,18 @@
       <Title>initDB</Title>
       <Author>
       </Author>
-      <Description>
-      </Description>
+      <Description>in DataProvider init DB, afterwards add queries</Description>
       <HelpUrl>
       </HelpUrl>
       <Shortcut>_initDB</Shortcut>
     </Header>
     <Snippet>
-      <Code Language="csharp" Delimiter="$"><![CDATA[<dboname>Entities dbmodel = new <dboname> Entities();]]></Code>
+      <Code Language="csharp" Delimiter="$"><![CDATA[
+		<dboname>Entities dbmodel = new <dboname>Entities();
+		List<Result> results = new List<Result>();
+		//create class Result (falls noch nicht vorhanden) -> class library: Shared, add props
+		//add queries to query all items in DB, insert or delete items in DB
+	  ]]></Code>
     </Snippet>
   </CodeSnippet>
 </CodeSnippets>

@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>DataProvider</Title>
+      <Author>
+      </Author>
+      <Description>full example DataProvider CarDBService
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>_dataprovider</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="csharp" Delimiter="$"><![CDATA[       CarManagementDbEntities dbmodel = new CarManagementDbEntities();
+
+        public List<Car> QueryAllCars()
+        {
+            var query = from c in dbmodel.Car
+                        select c;
+
+            return query.ToList();
+        }
+
+        public bool InsertCar(string name, string type, int? kw, int? miles)
+        {
+            Guid carId = Guid.NewGuid();
+
+            try
+            {
+                var newCar = new Car()
+                {
+                    Id = carId,
+                    Name = name,
+                    Type = type,
+                    Kw = kw,
+                    Miles = miles
+                };
+
+                dbmodel.Car.Add(newCar);
+                dbmodel.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

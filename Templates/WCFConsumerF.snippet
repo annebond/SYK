@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>WCFConsumerF</Title>
+      <Author>
+      </Author>
+      <Description>Example of console app WCF Consumer</Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>_wcfconsumerF</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="csharp" Delimiter="$"><![CDATA[            //before Main
+            private static bool run = true;
+
+            Console.WriteLine("Let's consume a service");
+            <name of service>Client client = new < name of service> Client();
+            client.DoWorkCompleted += client_DoWorkCompleted;
+            //send message
+            client.DoWorkAsync(new ChatMessage() { Header = "MyMessage", Date = DateTime.Now, Content = "Hello World" });
+            
+            while(run) 
+            {
+                Console.WriteLine("I'm waiting ...");
+            }
+            Console.ReadLine();
+
+            //in client_DoWorkCompleted method
+            run = false;
+            Console.Writeline("Data sent to Provider");]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

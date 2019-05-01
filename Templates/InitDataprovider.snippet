@@ -8,14 +8,20 @@
       <Title>InitDataprovider</Title>
       <Author>
       </Author>
-      <Description>
-      </Description>
+      <Description>init dataprovider in service which will use it</Description>
       <HelpUrl>
       </HelpUrl>
       <Shortcut>_initDataProvider</Shortcut>
     </Header>
     <Snippet>
-      <Code Language="csharp" Delimiter="$"><![CDATA[DataLayer.DataProvider prov = new DataLayer.DataProvider();]]></Code>
+      <Code Language="csharp" Delimiter="$"><![CDATA[
+		DataLayer.DataProvider prov = new DataLayer.DataProvider();
+		public List<Result> QueryAll()
+        {
+            return prov.QueryAll();
+        }
+		//das gleiche für alle weiteren methoden aus DataProvider - delete, insert ...
+	  ]]></Code>
     </Snippet>
   </CodeSnippet>
 </CodeSnippets>

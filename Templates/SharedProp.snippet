@@ -15,8 +15,27 @@
       <Shortcut>_sharedprop</Shortcut>
     </Header>
     <Snippet>
-      <Code Language="csharp" Delimiter="$"><![CDATA[        public String Fahrzeugname { get; set; }
-        public String Eigentuemer { get; set; }]]></Code>
+      <Code Language="csharp" Delimiter="$"><![CDATA[        
+		[DataMember]
+        public Guid Id { get; set; }
+        [DataMember]
+        public string Name { get; set; }
+        [DataMember]
+        public string Type { get; set; }
+        [DataMember]
+        public int? Kw { get; set; }
+        [DataMember]
+        public int? Miles { get; set; }
+
+        public Auto(Guid id, string name, string type, int? kw, int? miles)
+        {
+            Id = id;
+            Name = name;
+            Type = type;
+            Kw = kw;
+            Miles = miles;
+        }
+		]]></Code>
     </Snippet>
   </CodeSnippet>
 </CodeSnippets>

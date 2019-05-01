@@ -5,21 +5,20 @@
       <SnippetTypes>
         <SnippetType>Expansion</SnippetType>
       </SnippetTypes>
-      <Title>WCFprovideroutput</Title>
+      <Title>WCFprogram</Title>
       <Author>
       </Author>
-      <Description>
+      <Description>full example of program.cs of CarDBService
       </Description>
       <HelpUrl>
       </HelpUrl>
-      <Shortcut>_wcfprovideroutput</Shortcut>
+      <Shortcut>_wcfprogram</Shortcut>
     </Header>
     <Snippet>
-      <Code Language="csharp" Delimiter="$"><![CDATA[//output in WCF Provider service - 3 props of the message class
-public void DoWork(ChatMessage msg)
-{
-    Console.WriteLine(String.Format("Received a message {0} Date: {1} \r\n\t {2}", msg.Header, msg.Date, msg.Content))
-};]]></Code>
+      <Code Language="csharp" Delimiter="$"><![CDATA[ServiceHost host = new ServiceHost(typeof(CarDataService));
+            host.Open();
+            Console.WriteLine("CarDatabaseService started...");
+            Console.ReadLine();]]></Code>
     </Snippet>
   </CodeSnippet>
 </CodeSnippets>

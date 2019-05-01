@@ -16,17 +16,67 @@
     </Header>
     <Snippet>
       <Code Language="csharp" Delimiter="$"><![CDATA[/* DB PROCESS
+DB: Car(Id, Name, Type, Kw, Miles)
+SharedType: Auto (Guid, Name, Type, Kw, Miles)
+DataLayer: DbModel, DataProvider
+CarDatabaseService: CarDataService
+CarService: KwConvertService
+MQHandler: MQHandling
+ServiceLayer: LayerService
+ClientConsole
+GUI
+-----
+DB
 add connection: View->ServerExplorer -> (localdb)\MSSQLLocalDB
 add DB, Tabellen, Felder, ForeignKeys
 add new project ClassLibrary Datalayer
     add new folder DBModel
-        add new element: ADO.NET Entity Data Model (select created DB)
-    add new class DataProvider and initialize DB + add queries (to list, insert, delete elements from/into db tables)
+        add new element: ADO.NET Entity Data Model, call it DBModel, select created DB, select tables
+	//_dataprovider
+	add new class DataProvider and init DB
+		create class for List entity -> shared class library //_sharedprop
+		add reference to DataLayer -> select shared
+		add queries (to list, insert, delete elements from/into db tables)
+WCF
+add project class library Service
+	add item - WCF service c#
+	add reference to datalyer.dll, shared
+	connnection string AUS DataLayer app.config kopieren -> NACH console app.config einfügen
+	//entityframework vom Nuget Package Manager installieren
+	change interface: operation contract - e.g dowork weg, add List<Result> QueryAll() and other methods from DataProvider; //_wcfinterface
+	update class which implementes interface:  init dataprovider incl list, queries //_wcfservice
+	host service in program (wcf init) ->... ServiceHost(typeof(<name of service>)) //_WCFprogram
+	
+MQ
+add project classlibrary MQhHandling
+	add class MQHandling, change auf public, make generic -> Class MQHandling<T>
+	//_MQ
+add project classlibrary ServiceLayer
+	add class LayerService -> //_servicelayer
+		init MQ Handling //_initMQ
+		init serviceClient //_initMQservice
+		add method Task.Factory.StartNew(InsertToDb);
+		add InsertToDB method
+add project console
+	send objects via MQ
+	//MQclient
+
+---------------	
 add new project console app to call datalayer classes
-	add reference to datalyer.dll in debug folder
-	connnection string aus app.config im DataLayer kopieren -> in console app.config einfügen
-	init dataprovider
-	console writeline ...
+	add reference to datalyer.dll and shared
+	connnection string AUS DataLayer app.config kopieren -> NACH console app.config einfügen
+	//programOut
+		init dataprovider
+		console writeline ...
+		
+WCF CONSUME
+create console app Consumer
+add Reference - address: service URL
+in Program create instance of client - <name of service>Client client = new <name of service>Client();
+consume service - client.DoWorkCompleted += client.DoWorkCompleted;
+send message - client.DoWorkAsync(new ChatMessage(){ Header="DemoMessage", ...});
+
+
 */]]></Code>
     </Snippet>
   </CodeSnippet>

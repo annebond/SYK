@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>WCFKwConvert</Title>
+      <Author>
+      </Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>_WCFKwConvert</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="csharp" Delimiter="$"><![CDATA[            
+		
+		Interface
+		public interface IKwConvertService
+		{
+			[OperationContract]
+			int PsToKw(int ps);
+		}
+		
+		Service
+		public class KwConvertService : IKwConvertService
+		{  
+			public int PsToKw(int ps)
+			{
+				return (int) (ps * 0.73);
+			}
+		}
+
+		Program
+			ServiceHost host = new ServiceHost(typeof(KwConvertService));
+			host.Open();
+			Console.WriteLine("KwConvertService started...");
+			Console.ReadLine();
+		]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

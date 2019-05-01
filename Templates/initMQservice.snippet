@@ -5,23 +5,18 @@
       <SnippetTypes>
         <SnippetType>Expansion</SnippetType>
       </SnippetTypes>
-      <Title>WCFinithost</Title>
+      <Title>initMQservice</Title>
       <Author>
       </Author>
-      <Description>
+      <Description>init service in class which reads MQ
       </Description>
       <HelpUrl>
       </HelpUrl>
-      <Shortcut>_wcfinithost</Shortcut>
+      <Shortcut>_initMQservice</Shortcut>
     </Header>
     <Snippet>
-      <Code Language="csharp" Delimiter="$"><![CDATA[
-		// using.System.ServiceModel;
-		ServiceHost host = new ServiceHost(typeof(< name of service >));
-		host.Open();
-		Console.WriteLine("Service gestartet");
-		Console.ReadLine();
-	  ]]></Code>
+      <Code Language="csharp" Delimiter="$"><![CDATA[//connectedService.<ServiceName>Client client1 = new connectedService.<ServiceName>Client();
+        SR_CarDatabaseService.CarDataServiceClient client1 = new SR_CarDatabaseService.CarDataServiceClient();]]></Code>
     </Snippet>
   </CodeSnippet>
 </CodeSnippets>

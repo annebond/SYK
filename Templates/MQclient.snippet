@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>MQclient</Title>
+      <Author>
+      </Author>
+      <Description>full example of MQ client - console app sending messages to MQ
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>_MQclient</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="csharp" Delimiter="$"><![CDATA[            MQHandling<Auto> handler = new MQHandling<Auto>("entries");
+
+            Random rnd = new Random();
+            Console.WriteLine("Send Cars with MSMQ");
+
+            while (true)
+            {
+                Guid guid = Guid.NewGuid();
+                handler.Send(new Auto(guid, "Porsche", "GT2" , rnd.Next(200,500), rnd.Next(10000,100000)));
+                Thread.Sleep(2000);]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
