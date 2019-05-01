@@ -1,0 +1,10 @@
+CarDatabaseService
+1. Connectionstring in App.Config von DataLayer in die App.Config vom Service kopieren
+2. EntityFramework vom NuGet Package Manager installieren
+
+CarService
+1. Connectionstring in App.Config von DataLayer in die App.Config vom Service kopieren
+2. EntityFramework vom NuGet Package Manager installieren
+
+GUI 
+1. Enpoint Informationen in der App.Config von der ServiceLayerLibrary in die App.Config von der GUI einfügen (da diese Information bei einer .dll verloren geht, wenn es kein Ausführendes Programm ist, wie z.B eine Console)

@@ -1,21 +1,14 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
-  <CodeSnippet Format="1.0.0">
-    <Header>
-      <SnippetTypes>
-        <SnippetType>Expansion</SnippetType>
-      </SnippetTypes>
-      <Title>mq</Title>
-      <Author>
-      </Author>
-      <Description>
-      </Description>
-      <HelpUrl>
-      </HelpUrl>
-      <Shortcut>_mq</Shortcut>
-    </Header>
-    <Snippet>
-      <Code Language="csharp" Delimiter="§"><![CDATA[//class must be public and generic -> public class MQHandling<T>
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Messaging;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MQHandler2
+{
+    public class MQHandling<T>
+    {
         private string constring = @"FormatName:direct=os:";
         private string mqname = @".\private$\";
 
@@ -42,7 +35,6 @@
         public T Read()
         {
             return (T)mq.Receive().Body;
-        }]]></Code>
-    </Snippet>
-  </CodeSnippet>
-</CodeSnippets>
+        }
+    }
+}

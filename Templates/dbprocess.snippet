@@ -38,7 +38,7 @@ add new project ClassLibrary Datalayer
 		add reference to DataLayer -> select shared
 		add queries (to list, insert, delete elements from/into db tables)
 WCF
-add project class library Service
+add project console
 	add item - WCF service c#
 	add reference to datalyer.dll, shared
 	connnection string AUS DataLayer app.config kopieren -> NACH console app.config einfügen
@@ -52,6 +52,7 @@ add project classlibrary MQhHandling
 	add class MQHandling, change auf public, make generic -> Class MQHandling<T>
 	//_MQ
 add project classlibrary ServiceLayer
+	add reference to wcf services
 	add class LayerService -> //_servicelayer
 		init MQ Handling //_initMQ
 		init serviceClient //_initMQservice

@@ -15,7 +15,9 @@
       <Shortcut>_wcfprogram</Shortcut>
     </Header>
     <Snippet>
-      <Code Language="csharp" Delimiter="$"><![CDATA[ServiceHost host = new ServiceHost(typeof(CarDataService));
+      <Code Language="csharp" Delimiter="$"><![CDATA[ServiceHost host = 
+			//using System.ServiceModel;
+			new ServiceHost(typeof(CarDataService));
             host.Open();
             Console.WriteLine("CarDatabaseService started...");
             Console.ReadLine();]]></Code>

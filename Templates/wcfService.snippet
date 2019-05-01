@@ -17,7 +17,8 @@
     <Snippet>
       <Code Language="csharp" Delimiter="$"><![CDATA[DataProvider dataProvider = new DataProvider();
 
-        public bool InsertCar(string name, string type, int? kw, int? miles)
+        DataProvider dataProvider = new DataProvider();
+		public bool InsertCar(string name, string type, int? kw, int? miles)
         {
             return dataProvider.InsertCar(name, type, kw, miles);
         }
